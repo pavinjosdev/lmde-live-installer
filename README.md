@@ -1,5 +1,7 @@
 # live-installer
-A live installer for LMDE (Linux Mint Debian Edition)
+A live installer for LMDE (Linux Mint Debian Edition).
+This fork provides the option to format root partition using btrfs, which can be used together with LUKS/LVM to have encrypted root/swap partitions.
+Subvolumes are designed for easy snapshots using snapper and for [grub-btrfs](https://github.com/Antynea/grub-btrfs) integration.
 
 # Usage
 ## Normal installation
