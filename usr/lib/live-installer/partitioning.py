@@ -262,10 +262,16 @@ class PartitionSetup(Gtk.TreeStore):
         print('Disks: ', self.disks)
         already_done_full_disk_format = False
         for disk_path, disk_description in self.disks:
+            # Get the device from parted
             try:
                 print("    Analyzing path='%s' description='%s'" % (disk_path, disk_description))
                 disk_device = parted.getDevice(disk_path)
                 print("      - Found the device...")
+            except Exception as detail:
+                print("      - Found an issue while looking for the device: %s" % detail)
+                continue
+            # Get the partitions from parted
+            try:
                 disk = parted.Disk(disk_device)
                 print("      - Found the disk...")
             except Exception as detail:
